@@ -9,7 +9,7 @@ var specialCharacter;
 var choices;
 var lowerCaseChoice = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','w','x','y','z'];
 var upperCaseChoice = ['A','B','C','D','E','F','G','H','I','J','K','L', 'M','N','O','P','Q','R','S','T','U','W','X','Y','Z'];
-var numberChoice = [0,1,2,3,4,5,6,7,8,9];
+var numberChoice = ["0","1","2","3","4","5","6","7","8","9"];
 var specialCharacterChoice = ['`','~','!','@','#','$','%','^','&','*','(',')','-','_','+','=','[',']','{','}','|','/',';',":",'<','>','?',',','.','"',''];
 
 
@@ -24,25 +24,38 @@ var generateBtn = document.querySelector("#generate");
 
 //Define function generatePassword()
 function generatePassword() {
- 
+ console.log("generate function called");
 //When click on button "generate password" users will see a length prompt
   passwordLength = prompt("choose a number between 8 and 128 for password length");
+
+
+  //Cose was not working so used console.log in each piece to figure out the problem and fix it
  
   //If a number for lenght is not entered, a message will pop up
    if(!passwordLength){
      alert("you must choose a number");
+     console.log("password link was not selected");
 
      //set a minimun and maximun number. A message if this condition is not met
    }else if(passwordLength < 8 || passwordLength > 128){
      passwordLength = prompt("no less than 8 and no more than 128");
+     console.log("password was the wrong length");
     
      //Once number is entered and matches criteria then users can choose at least one of the listed options
    }else {
+    console.log ("password length was right");
      lowerCase = confirm("do you want to include lowecase letters?");
      upperCase = confirm("do you want to include uppercase letters?");
      number = confirm("do you want to include numbers?");
      specialCharacter = confirm("do you want to include special characters?");
-   };
+
+     
+  
+     console.log('islowerCase' + lowerCase);
+     console.log(upperCase);
+     console.log(number);
+     console.log(specialCharacter);
+;   };
 
     //If they do not select one of the options presented after lenght then an alert instructs them to do so
     if (!lowerCase && !upperCase && !number && !specialCharacter) {
@@ -50,60 +63,89 @@ function generatePassword() {
 
       //Different combination of choices
       //One Choice
-    }else if (lowerCase){
+    }if (lowerCase){
     choices = lowerCaseChoice;
+    console.log (choices);
+    
 
-    }else if (upperCase){
+    }if (upperCase){
      choices = upperCaseChoice;
+     console.log (choices);
 
-    }else if (number){
+    }if (number){
      choices = numberChoice;
+     console.log (choices);
 
-    }else if (specialCharacter){
+    }if (specialCharacter){
      choices = specialCharacterChoice;
+     console.log (choices);
 
      //Two choices. Contact combines two arrays
-    }else if(lowerCase && upperCase){
+    }if(lowerCase && upperCase){
      choices = lowerCaseChoice.concat(upperCaseChoice);
+     console.log (choices);
+     console.log(lowerCaseChoice.concat(upperCaseChoice));
 
-    }else if (lowerCase && number){
+    }if (lowerCase && number){
      choices = lowerCaseChoice.concat(numberChoice);
+     console.log (choices);
+     console.log (lowerCaseChoice.concat(numberChoice));
 
-    }else if (lowerCase && specialCharacter){
+    }if (lowerCase && specialCharacter){
      choices = lowerCaseChoice.concat(specialCharacterChoice);
+     console.log (choices);
+     console.log (lowerCaseChoice.concat(specialCharacterChoice));
 
-    }else if (upperCase && number){
+    }if (upperCase && number){
      choices = upperCaseChoice.concat(numberChoice);
+     console.log (choices);
+     console.log (upperCaseChoice.concat(numberChoice));
 
-    }else if (upperCase && specialCharacter) {
+    }if (upperCase && specialCharacter) {
      choices = upperCaseChoice.concat(specialCharacterChoice);
+     console.log (choices);
+     console.log (upperCaseChoice.concat(specialCharacterChoice));
 
-    }else if (number && specialCharacter) {
+    }if (number && specialCharacter) {
      choices = numberChoice.concat(specialCharacterChoice);
+     console.log (choices);
+     console.log (numberChoice.concat(specialCharacterChoice));
 
      //Three Choices
-    }else if (lowerCase && upperCaseChoice && number){
+    }if (lowerCase && upperCaseChoice && number){
      choices = lowerCaseChoice.concat(upperCaseChoice, numberChoice);
+     console.log (choices);
+     console.log (lowerCaseChoice.concat(upperCaseChoice, numberChoice));
 
-    }else if (lowerCase && upperCase && specialCharacter){
+    }if (lowerCase && upperCase && specialCharacter){
      choices = lowerCaseChoice.concat(upperCaseChoice, specialCharacterChoice);
+     console.log (choices);
+     console.log (lowerCaseChoice.concat(upperCaseChoice, specialCharacterChoice));
 
-    }else if (lowerCase && number && specialCharacter){
+    }if (lowerCase && number && specialCharacter){
      choices = lowerCaseChoice.concat(numberChoice, specialCharacterChoice);
+     console.log (choices);
+     console.log (lowerCaseChoice.concat(numberChoice, specialCharacterChoice));
 
-    }else if (upperCase && number && specialCharacter){
+    }if (upperCase && number && specialCharacter){
      choices = upperCaseChoice.concat(numberChoice, specialCharacterChoice);
+     console.log (choices);
+     console.log (upperCaseChoice.concat(numberChoice, specialCharacterChoice));
 
      //All four choices
-    }else if (lowerCase && upperCase && number && specialCharacter){
+    }if (lowerCase && upperCase && number && specialCharacter){
      choices = lowerCaseChoice.concat(upperCaseChoice, numberChoice, specialCharacterChoice);
+     console.log (choices);
+     console.log (lowerCaseChoice.concat(upperCaseChoice, numberChoice, specialCharacterChoice));
     };
 
+    //Gave an empty value to password
 
-     var password;
+     var password = "";
      for(var i = 0; i < passwordLength; i++){
       var randomChoice = [Math.floor(Math.random() * choices.length)];
       password = password + choices[randomChoice];
+      console.log(password);
   
     }
     return password;
@@ -112,7 +154,9 @@ function generatePassword() {
   
  // Write password to the #password input
  function writePassword() {
+  console.log ("right writePassword is called");
   var password = generatePassword();
+  console.log(password);
 
 
   var passwordText = document.querySelector("#password");
