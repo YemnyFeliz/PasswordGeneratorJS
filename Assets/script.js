@@ -35,15 +35,19 @@ function generatePassword() {
   //If a number for lenght is not entered, a message will pop up
    if(!passwordLength){
      alert("you must choose a number");
+
      console.log("password link was not selected");
+     
 
      //set a minimun and maximun number. A message if this condition is not met
    }else if(passwordLength < 8 || passwordLength > 128){
      passwordLength = prompt("no less than 8 and no more than 128");
      console.log("password was the wrong length");
+   }
     
      //Once number is entered and matches criteria then users can choose at least one of the listed options
-   }else {
+     // changed else condition to if condition so when introduce wrong length and then choose right length other options are presented
+   if (passwordLength => 8 || passwordLength <= 128) {
     console.log ("password length was right");
      lowerCase = confirm("do you want to include lowecase letters?");
      upperCase = confirm("do you want to include uppercase letters?");
@@ -55,7 +59,7 @@ function generatePassword() {
      console.log(upperCase);
      console.log(number);
      console.log(specialCharacter);
-;   };
+   };
 
     //If they do not select one of the options presented after lenght then an alert instructs them to do so
     if (!lowerCase && !upperCase && !number && !specialCharacter) {
