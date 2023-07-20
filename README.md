@@ -4,6 +4,7 @@
 This is a password generator that uses windows object to prompt the users to choose certain characteristics for their passwords.
 Passowords are generated randomly using JavaScript.
 
+[Deployed-web](https://yemnyfeliz.github.io/PasswordGeneratorJS/)
 
 ## Installation
 
